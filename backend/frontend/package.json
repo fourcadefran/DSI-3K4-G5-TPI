@@ -1,0 +1,18 @@
+{
+  "name": "frontend",
+  "version": "1.0.0",
+  "description": "tpi-dsi-3k4-g5",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.7.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-hook-form": "^7.51.5",
+    "tailwind": "^4.0.0"
+  }
+}
