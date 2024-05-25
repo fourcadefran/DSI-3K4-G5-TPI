@@ -1,15 +1,22 @@
 class Resenia:
-    def __init__(self, comentario, esPremium, fechaResenia, puntaje):
+    def __init__(self, comentario, esPremium, fechaResenia, puntaje, vino):
         self.comentario = comentario
         self.esPremium = esPremium
         self.fechaResenia = fechaResenia
         self.puntaje = puntaje
+        self.vino = vino
 
-    def sosDelPeriodo(self):
-        pass
+    def sosDelPeriodo(self, fechaDesde, fechaHasta):
+        if (fechaDesde <= self.fechaResenia <= fechaHasta):
+            return True
+        else: 
+            return False
 
     def sosDeSommelier(self):
-        pass
+        if self.esPremium:
+            return True
+        else:
+            return False
 
     def getPuntaje(self):
-        pass
+        return self.puntaje

@@ -3,4 +3,4 @@ class Provincia:
         self.nombre = nombre
 
     def getNombre(self):
-        pass
+        return self.nombre
