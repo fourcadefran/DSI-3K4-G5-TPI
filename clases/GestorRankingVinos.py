@@ -6,26 +6,26 @@ class GestorRankingVinos:
         self.vinosOrdenados = vinosOrdenados
         self.vinosQueCumplenFiltros = vinosQueCumplenFiltros
 
-    def opcionGenerarRankingVinos():
+    def opcionGenerarRankingVinos(self):
         pass
 
-    def tomarSelFechaDesdeHasta():
+    def tomarSelFechaDesdeHasta(self):
         pass
 
-    def tomarSelTipoResenia():
+    def tomarSelTipoResenia(self):
         pass
 
-    def tomarSelTipoVisualizacion():
+    def tomarSelTipoVisualizacion(self):
         pass
 
-    def buscarVinosConReseniasEnPeriodo():
+    def buscarVinosConReseniasEnPeriodo(self):
         pass
 
-    def calcularPuntajeDeSommelierEnPeriodo():
+    def calcularPuntajeDeSommelierEnPeriodo(self):
         pass
 
-    def ordenarVinos():
+    def ordenarVinos(self):
         pass
 
-    def finCU():
+    def finCU(self):
         pass

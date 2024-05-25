@@ -6,23 +6,23 @@ class Vino:
         self.notaDeCataBodeba = notaDeCataBodega
         self.precioARS = precioARS
 
-    def tenesReseniasDeTipoEnPeriodo():
+    def tenesReseniasDeTipoEnPeriodo(self):
         pass
 
-    def calcularPuntajeDeSommelierEnPeriodo():
+    def calcularPuntajeDeSommelierEnPeriodo(self):
         pass
 
-    def calcularPuntajePromedio():
+    def calcularPuntajePromedio(self):
         pass
 
-    def getNombre():
+    def getNombre(self):
         pass
 
-    def getPrecio():
+    def getPrecio(self):
         pass
 
-    def buscarInfoBodega():
+    def buscarInfoBodega(self):
         pass
 
-    def buscarVarietal():
+    def buscarVarietal(self):
         pass

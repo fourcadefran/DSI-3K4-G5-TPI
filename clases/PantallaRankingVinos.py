@@ -5,35 +5,35 @@ class PantallaRankingVinos:
         self.txtFechaDesde = txtFechaDesde
         self.txtFechaHasta = txtFechaHasta
 
-    def opcionGenerarRankingVinos():
+    def opcionGenerarRankingVinos(self):
         pass
 
-    def habilitarPantalla():
+    def habilitarPantalla(self):
         pass
 
-    def solicitarSelFechaDesdeHasta():
+    def solicitarSelFechaDesdeHasta(self):
         pass
 
-    def tomarSelFechaDesde():
+    def tomarSelFechaDesde(self):
         pass
 
-    def tomarSelFechaHasta():
+    def tomarSelFechaHasta(self):
         pass
 
-    def validarPeriodo():
+    def validarPeriodo(self):
         pass
     
-    def solicitarSelTipoResenia():
+    def solicitarSelTipoResenia(self):
         pass
 
-    def tomarSelTipoResenia():
+    def tomarSelTipoResenia(self):
         pass
 
-    def solicitarSelTipoVisualizacion():
+    def solicitarSelTipoVisualizacion(self):
         pass
 
-    def tomarTipoVisualizacion():
+    def tomarTipoVisualizacion(self):
         pass
 
-    def confirmarExportacion():
+    def confirmarExportacion(self):
         pass

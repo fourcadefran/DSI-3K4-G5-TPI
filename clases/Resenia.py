@@ -5,11 +5,11 @@ class Resenia:
         self.fechaResenia = fechaResenia
         self.puntaje = puntaje
 
-    def sosDelPeriodo():
+    def sosDelPeriodo(self):
         pass
 
-    def sosDeSommelier():
+    def sosDeSommelier(self):
         pass
 
-    def getPuntaje():
+    def getPuntaje(self):
         pass

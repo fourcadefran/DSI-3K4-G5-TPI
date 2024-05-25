@@ -5,8 +5,8 @@ class Bodega:
         self.historia = historia
         self.descripcion = descripcion
 
-    def getNombre():
+    def getNombre(self):
         pass
 
-    def obtenerRegionYPais():
+    def obtenerRegionYPais(self):
         pass

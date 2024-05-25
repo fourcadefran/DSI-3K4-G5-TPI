@@ -3,8 +3,8 @@ class RegionVitivinicola:
         self.descripcion = descripcion
         self.nombre = nombre
 
-    def getNombre():
+    def getNombre(self):
         pass
 
-    def obtenerPais():
+    def obtenerPais(self):
         pass
