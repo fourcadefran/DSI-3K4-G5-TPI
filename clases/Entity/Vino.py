@@ -4,7 +4,7 @@ from Entity.Varietal import Varietal
 
 
 class Vino:
-    def __init__(self, aniada, imagenEtiqueta, nombre, notaDeCataBodega, precioARS, resenia: list[Resenia], varietal: list[Varietal], bodega):
+    def __init__(self, aniada, imagenEtiqueta, nombre, notaDeCataBodega, precioARS, resenia: list[Resenia], varietal, bodega):
         self.aniada = aniada
         self.imagenEtiqueta = imagenEtiqueta
         self.nombre = nombre
@@ -23,10 +23,20 @@ class Vino:
         return self.resenia.sosDelPeriodo(fechaDesde, fechaHasta)
 
     def calcularPuntajeDeSommelierEnPeriodo(self):
-        pass
+        acumulador = 0
+        contador = 0
 
-    def calcularPuntajePromedio(self):
-        pass
+        for resenia in self.resenia:
+            if resenia.sosDeSommelier() and resenia.sosDelPeriodo():
+                acumulador += resenia.getPuntaje()
+                contador += 1
+        self.calcularPuntajePromedio(acumulador, contador)
+
+    def calcularPuntajePromedio(self, acumulador, contador):
+        if contador != 0:
+            return acumulador / contador
+        else:
+            return 0
 
     def getNombre(self):
         return self.nombre
@@ -37,6 +47,6 @@ class Vino:
     def buscarInfoBodega(self):
         return self.bodega.getNombre()
 
-    # Agregar loop
+    # Loop en DS -> aclara que solo tiene un Varietal en los CU
     def buscarVarietal(self):
         return self.varietal.getDescripcion()
