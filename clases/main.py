@@ -9,4 +9,6 @@ bodega1 = Bodega(123, 'qsy', 'asd', 'asdasd')
 
 vino1 = Vino(12, 'a', 'toro', 'rico', 1200, resenia1, varietal1, bodega1)
 
-vino1.buscarInfoBodega()
+print(vino1.buscarInfoBodega())
+
+

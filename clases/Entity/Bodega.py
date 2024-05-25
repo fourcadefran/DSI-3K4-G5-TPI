@@ -6,7 +6,7 @@ class Bodega:
         self.descripcion = descripcion
 
     def getNombre(self):
-        pass
+        return self.nombre
 
     def obtenerRegionYPais(self):
         pass

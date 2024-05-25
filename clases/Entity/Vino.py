@@ -1,4 +1,4 @@
-from Bodega import *
+from Entity.Bodega import Bodega
 
 class Vino:
     def __init__(self, aniada, imagenEtiqueta, nombre, notaDeCataBodega, precioARS, resenia, varietal, bodega: list[Bodega]):
@@ -29,7 +29,7 @@ class Vino:
         return self.precioARS
 
     def buscarInfoBodega(self):
-        return self.bodega[2]
+        return self.bodega.getNombre()
 
     def buscarVarietal(self):
         pass
