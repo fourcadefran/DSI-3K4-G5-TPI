@@ -1,6 +1,8 @@
 class Provincia:
-    def __init__(self, nombre):
+    def __init__(self, nombre, pais):
         self.nombre = nombre
 
+        self.pais = pais
+
     def obtenerPais(self):
-        pass
+        return self.pais.getNombre()

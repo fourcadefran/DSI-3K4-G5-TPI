@@ -4,4 +4,4 @@ class Varietal:
         self.porcentajeComposicion = porcentajeComposicion
 
     def getDescripcion(self):
-        pass
+        return self.descripcion
