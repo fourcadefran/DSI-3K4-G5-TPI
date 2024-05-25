@@ -1,3 +1,5 @@
+from Entity.Vino import Vino
+
 class GestorRankingVinos:
     def __init__(self, fechaDesde, fechaHasta, tipoRankingSeleccionado, vinosOrdenados, vinosQueCumplenFiltros):
         self.fechaDesde = fechaDesde
@@ -21,10 +23,11 @@ class GestorRankingVinos:
     def buscarVinosConReseniasEnPeriodo(self):
         pass
 
-    def calcularPuntajeDeSommelierEnPeriodo(self):
-        pass
+    def calcularPuntajeDeSommelierEnPeriodo(self, vino: Vino):
+        vino.calcularPuntajeDeSommelierEnPeriodo()
 
     def ordenarVinos(self):
+        # ordenados de mayor a menor puntaje
         pass
 
     def finCU(self):
