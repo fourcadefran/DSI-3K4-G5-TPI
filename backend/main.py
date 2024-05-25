@@ -17,8 +17,11 @@ app.add_middleware(
 )
 
 
-@app.get("/")
-async def root():
+@app.get("/ranking")
+async def root(json):
+
+    Gestor = Gestot()
+
     return {"message": "Hello World"}
 
 
