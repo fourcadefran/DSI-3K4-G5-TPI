@@ -6,17 +6,20 @@ class Resenia:
         self.puntaje = puntaje
         self.vino = vino
 
+
     def sosDelPeriodo(self, fechaDesde, fechaHasta):
         if (fechaDesde <= self.fechaResenia <= fechaHasta):
             return True
         else: 
             return False
 
+
     def sosDeSommelier(self):
         if self.esPremium:
             return True
         else:
             return False
+
 
     def getPuntaje(self):
         return self.puntaje

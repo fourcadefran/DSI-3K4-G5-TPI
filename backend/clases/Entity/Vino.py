@@ -1,6 +1,7 @@
-from clases.Entity.Bodega import Bodega
-from clases.Entity.Resenia import Resenia
-from clases.Entity.Varietal import Varietal
+from Entity.Bodega import Bodega
+from Entity.Resenia import Resenia
+from Entity.Varietal import Varietal
+#from Control.GestorRankingVinos import GestorRankingVinos
 
 
 class Vino:
@@ -11,16 +12,20 @@ class Vino:
         self.notaDeCataBodeba = notaDeCataBodega
         self.precioARS = precioARS
         
-        self.resenia = resenia
+        self.resenia = resenia # []
         self.varietal = varietal
         self.bodega = bodega
 
-    def tenesReseniasDeTipoEnPeriodo(self):
-        # Revisar relacion con gestor
-        fechaDesde = None
-        fechaHasta = None
+
+    def tenesReseniasDeTipoEnPeriodo(self, fechaDesde, fechaHasta, resenias):
         
-        return self.resenia.sosDelPeriodo(fechaDesde, fechaHasta)
+        for resenia in resenias:
+            esPeriodo = resenias[resenia].sosDelPeriodo(fechaDesde, fechaHasta)
+            sosSommelier = resenias[resenia].sosDeSommelier()
+            if (esPeriodo and sosSommelier):
+                nombre = self.getNombre()
+                precio = self.getPrecio()
+
 
     def calcularPuntajeDeSommelierEnPeriodo(self):
         acumulador = 0
@@ -32,20 +37,25 @@ class Vino:
                 contador += 1
         self.calcularPuntajePromedio(acumulador, contador)
 
+
     def calcularPuntajePromedio(self, acumulador, contador):
         if contador != 0:
             return acumulador / contador
         else:
             return 0
 
+
     def getNombre(self):
         return self.nombre
+
 
     def getPrecio(self):
         return self.precioARS
 
+
     def buscarInfoBodega(self):
         return self.bodega.getNombre()
+
 
     # Loop en DS -> aclara que solo tiene un Varietal en los CU
     def buscarVarietal(self):
