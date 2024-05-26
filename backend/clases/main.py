@@ -8,6 +8,7 @@ varietal1 = Varietal('varietal1', 'adasd')
 bodega1 = Bodega(123, 'qsy', 'asd', 'asdasd')
 
 vino1 = Vino(12, 'a', 'toro', 'rico', 1200, resenia1, varietal1, bodega1)
+resenia1.vino = vino1
 
 print(vino1.buscarInfoBodega())
 

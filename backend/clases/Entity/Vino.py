@@ -1,6 +1,6 @@
-from Entity.Bodega import Bodega
-from Entity.Resenia import Resenia
-from Entity.Varietal import Varietal
+from clases.Entity.Bodega import Bodega
+from clases.Entity.Resenia import Resenia
+from clases.Entity.Varietal import Varietal
 
 
 class Vino:

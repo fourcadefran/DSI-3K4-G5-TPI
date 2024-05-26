@@ -1,4 +1,5 @@
-from Entity.Vino import Vino
+from clases.Entity.Vino import Vino
+
 
 class GestorRankingVinos:
     def __init__(self, fechaDesde, fechaHasta, tipoRankingSeleccionado, vinosOrdenados, vinosQueCumplenFiltros):
