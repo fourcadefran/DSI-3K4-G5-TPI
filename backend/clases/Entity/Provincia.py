@@ -1,4 +1,4 @@
-from Entity.Pais import Pais
+from clases.Entity.Pais import Pais
 
 class Provincia:
     def __init__(self, nombre, pais):

@@ -114,9 +114,9 @@ vino10 = Vino(
 )
 
 
-vinos = [vino1, vino2, vino3, vino4, vino5, vino6, vino7, vino8, vino9, vino10]
+vinos_general = [vino1, vino2, vino3, vino4, vino5, vino6, vino7, vino8, vino9, vino10]
 
 
 # prueba mostrar el PRIMER comentario de las reseñas de los vinos
-for vino in vinos:
+for vino in vinos_general:
     print(vino.resenia[0].comentario)

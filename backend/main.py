@@ -1,7 +1,10 @@
 from fastapi import FastAPI
 from starlette.middleware.cors import CORSMiddleware
+
+from clases.Interface.InterfazExcel import InterfazExcel
 from config.models import RankingRequest
-from clases.Control import GestorRankingVinos
+from clases.Control.GestorRankingVinos import GestorRankingVinos
+from clases.Entity.Vino import vinos_generales
 
 app = FastAPI()
 
@@ -27,10 +30,17 @@ async def root(request: RankingRequest):
     fecha_hasta = request.fecha_hasta.date()  # Convertir a objeto date
     resenia = request.tipo_de_resenia
     visualizacion = request.tipo_de_visualizacion
-    # gestor = GestorRankingVinos()
-    print(fecha_desde, fecha_hasta, visualizacion, resenia)
 
-    return {"message": "Ranking received"}
+    gestor = GestorRankingVinos(fecha_desde, fecha_hasta, resenia, vinos_generales)
+    gestor.buscarVinosConReseniasEnPeriodo(vinos_generales)
+    gestor.calcularPuntajeDeSommelierEnPeriodo()
+    gestor.ordenarVinos()
+    interfaz_excel = InterfazExcel()
+    reporte = interfaz_excel.exportarExcel(objetos=gestor.vinosOrdenados)
+    return {
+        "message": "Ranking received",
+        "reporte": reporte
+    }
 
 
 @app.get("/hello/{name}")

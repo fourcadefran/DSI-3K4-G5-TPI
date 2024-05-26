@@ -1,11 +1,18 @@
 import React, {useEffect, useState} from 'react';
 import Swal from 'sweetalert2'
+import { Modal, Button } from 'react-bootstrap';
 
+interface Reporte {
+  message: string
+  reporte: object
+}
 const FormComponent = () => {
   const [showForm, setShowForm] = useState(false);
   const [showResenia, setShowResenia] = useState(false)
   const [fechaDesde, setFechaDesde] = useState<string>()
   const [fechaHasta, setFechaHasta] = useState<string>()
+    const [reporte, setReporte] = useState<Reporte>()
+    const [showModal, setShowModal] = useState(false);
 
   const [tipoDeVisualizacion, setTipoDeVisualizacion] = useState<string>()
   const [tipoDeResenia, setTipoDeResenia] = useState<string>()
@@ -61,7 +68,8 @@ const FormComponent = () => {
       });
 
       const result = await response.json();
-      console.log(result);
+      setReporte(result)
+        setShowModal(true);
     } catch (error) {
       console.error('Error:', error);
     }
@@ -138,12 +146,55 @@ const FormComponent = () => {
                       type="submit"
                 className="btn btn-success"
               >
-                Enviar
+                Confirmar
               </button>
             </div>
           </form>
         )}
       </div>
+        <Modal show={showModal} onHide={() => setShowModal(false)} size="lg">
+        <Modal.Header closeButton>
+          <Modal.Title>Reporte de Vinos</Modal.Title>
+        </Modal.Header>
+        <Modal.Body style={{ maxHeight: '70vh', overflowY: 'auto' }}>
+          {reporte ? (
+            <table className="table table-striped">
+              <thead>
+                <tr>
+                  <th>Nombre</th>
+                  <th>Calificación</th>
+                  <th>Precio (ARS)</th>
+                  <th>Bodega</th>
+                  <th>Varietal</th>
+                  <th>Región</th>
+                  <th>País</th>
+                </tr>
+              </thead>
+              <tbody>
+                {/*@ts-expect-error*/}
+                {reporte.reporte.map((item, index) => (
+                  <tr key={index}>
+                    <td>{item.nombre}</td>
+                    <td>{item.calificacion.toFixed(2)}</td>
+                    <td>{item.precio}</td>
+                    <td>{item.bodega}</td>
+                    <td>{item.varietal}</td>
+                    <td>{item.region}</td>
+                    <td>{item.pais}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          ) : (
+            <p>No hay datos para mostrar.</p>
+          )}
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setShowModal(false)}>
+            Cerrar
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 };

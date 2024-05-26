@@ -1,4 +1,4 @@
-from Entity.Provincia import Provincia
+from clases.Entity.Provincia import Provincia
 
 
 class RegionVitivinicola:

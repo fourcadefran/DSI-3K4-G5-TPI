@@ -1,3 +1,6 @@
+from datetime import datetime
+
+
 class Resenia:
     def __init__(self, comentario, esPremium, fechaResenia, puntaje, vino):
         self.comentario = comentario
@@ -6,9 +9,9 @@ class Resenia:
         self.puntaje = puntaje
         self.vino = vino
 
-
     def sosDelPeriodo(self, fechaDesde, fechaHasta):
-        if (fechaDesde <= self.fechaResenia <= fechaHasta):
+        date_fecha_resenia = datetime.strptime(self.fechaResenia, "%Y-%m-%d").date()
+        if fechaDesde <= date_fecha_resenia <= fechaHasta:
             return True
         else: 
             return False
