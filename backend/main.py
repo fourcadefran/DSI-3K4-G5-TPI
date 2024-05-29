@@ -25,7 +25,6 @@ app.add_middleware(
 
 @app.post("/ranking")
 async def root(request: RankingRequest):
-    print(request)
     fecha_desde = request.fecha_desde.date()  # Convertir a objeto date
     fecha_hasta = request.fecha_hasta.date()  # Convertir a objeto date
     resenia = request.tipo_de_resenia
