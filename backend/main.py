@@ -30,7 +30,7 @@ async def root(request: RankingRequest):
     resenia = request.tipo_de_resenia
     visualizacion = request.tipo_de_visualizacion
 
-    gestor = GestorRankingVinos(fecha_desde, fecha_hasta, resenia, vinos_generales)
+    gestor = GestorRankingVinos(fecha_desde, fecha_hasta, resenia, [])
     gestor.buscarVinosConReseniasEnPeriodo(vinos_generales)
     gestor.calcularPuntajeDeSommelierEnPeriodo()
     gestor.ordenarVinos()
