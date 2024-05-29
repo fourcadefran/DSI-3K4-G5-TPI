@@ -7,7 +7,7 @@ from clases.Entity.Pais import Pais
 
 
 class Vino:
-    def __init__(self, aniada, imagenEtiqueta, nombre, notaDeCataBodega, precioARS, resenia: list[Resenia], varietal, bodega, puntaje_promedio=0):
+    def __init__(self, aniada, imagenEtiqueta, nombre, notaDeCataBodega, precioARS, resenia: list[Resenia], varietal, bodega):
         self.aniada = aniada
         self.imagenEtiqueta = imagenEtiqueta
         self.nombre = nombre
@@ -17,8 +17,7 @@ class Vino:
         self.resenia = resenia  # []
         self.varietal = varietal
         self.bodega = bodega
-        # TODO: PREGUNTAR SI PUEDO GUARDAR ACA EL PUNTAJE PROMEDIO
-        self.puntaje_promedio = puntaje_promedio
+
 
     def tenesReseniasDeTipoEnPeriodo(self, fechaDesde, fechaHasta, resenias):
         for resenia in resenias:
@@ -28,16 +27,16 @@ class Vino:
                 return True
 
     def calcularPuntajeDeSommelierEnPeriodo(self, gestor):
-        acumulador = 0  # la suma de puntajes
-        contador = 0  # cantidad de resenias
+        acumulador_de_puntaje_sommelier = 0  # la suma de puntajes de las resenias de sommelier
+
         fecha_desde = gestor.fechaDesde
         fecha_hasta = gestor.fechaHasta
 
         for resenia in self.resenia:
             if resenia.sosDeSommelier() and resenia.sosDelPeriodo(fecha_desde, fecha_hasta):
-                acumulador += resenia.getPuntaje()
-                contador += 1
-                self.puntaje_promedio = self.calcularPuntajePromedio(acumulador, contador)
+                acumulador_de_puntaje_sommelier += resenia.getPuntaje()
+        return acumulador_de_puntaje_sommelier
+
 
 
     def calcularPuntajePromedio(self, acumulador, contador):
@@ -177,7 +176,3 @@ vino10 = Vino(
 
 vinos_generales = [vino1, vino2, vino3, vino4, vino5, vino6, vino7, vino8, vino9, vino10]
 
-
-# prueba mostrar el PRIMER comentario de las reseñas de los vinos
-for vino in vinos_generales:
-    print(vino.resenia[0].comentario)

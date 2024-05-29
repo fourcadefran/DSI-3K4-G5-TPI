@@ -25,13 +25,12 @@ app.add_middleware(
 
 @app.post("/ranking")
 async def root(request: RankingRequest):
-    print(request)
     fecha_desde = request.fecha_desde.date()  # Convertir a objeto date
     fecha_hasta = request.fecha_hasta.date()  # Convertir a objeto date
     resenia = request.tipo_de_resenia
     visualizacion = request.tipo_de_visualizacion
 
-    gestor = GestorRankingVinos(fecha_desde, fecha_hasta, resenia, vinos_generales)
+    gestor = GestorRankingVinos(fecha_desde, fecha_hasta, resenia, [])
     gestor.buscarVinosConReseniasEnPeriodo(vinos_generales)
     gestor.calcularPuntajeDeSommelierEnPeriodo()
     gestor.ordenarVinos()
