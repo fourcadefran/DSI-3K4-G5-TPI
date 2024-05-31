@@ -6,7 +6,7 @@ interface Reporte {
   message: string
   reporte: object
 }
-const FormComponent = () => {
+const PantallaRankingVinos = () => {
   const [showForm, setShowForm] = useState(false)
   const [showResenia, setShowResenia] = useState(false)
   const [fechaDesde, setFechaDesde] = useState<string>()
@@ -195,4 +195,4 @@ const FormComponent = () => {
   )
 }
 
-export default FormComponent
+export default PantallaRankingVinos

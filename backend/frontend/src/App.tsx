@@ -1,9 +1,9 @@
-import FormComponent from './FormComponent';
+import PantallaRankingVinos from './PantallaRankingVinos.tsx';
 
 function App() {
   return (
     <div>
-      <FormComponent />
+      <PantallaRankingVinos />
     </div>
   )
 }
