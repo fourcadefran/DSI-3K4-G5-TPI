@@ -36,6 +36,7 @@ async def root(request: RankingRequest):
     gestor.ordenarVinos()
     interfaz_excel = InterfazExcel()
     reporte = interfaz_excel.exportarExcel(objetos=gestor.vinosOrdenados)
+    gestor.vinosOrdenados = []
     return {
         "message": "Ranking received",
         "reporte": reporte

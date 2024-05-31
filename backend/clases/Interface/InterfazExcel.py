@@ -7,7 +7,7 @@ class InterfazExcel:
         reporte = []
         contador = 0
         for objeto in objetos:
-            if contador == 9:
+            if contador == 10:
                 break
             reporte.append({
                 "nombre": objeto[0].nombre,
