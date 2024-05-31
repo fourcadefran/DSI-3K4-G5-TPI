@@ -34,6 +34,7 @@ async def root(request: RankingRequest):
     gestor.calcularPuntajeDeSommelierEnPeriodo()
     gestor.ordenarVinos()
     interfaz_excel = InterfazExcel()
+    # TODO: METER MAS COMENTARIOS
     return {
         "message": "Ranking received",
         "reporte": interfaz_excel.exportarExcel(objetos=gestor.vinosOrdenados)
