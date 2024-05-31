@@ -28,6 +28,7 @@ class GestorRankingVinos:
                 self.vinosQueCumplenFiltros.append(vino)
 
     def calcularPuntajeDeSommelierEnPeriodo(self):
+        self.vinosOrdenados = []
         for vino in self.vinosQueCumplenFiltros:
             acumulador_de_puntaje_sommelier = vino.calcularPuntajeDeSommelierEnPeriodo(self)
             puntaje_promedio = vino.calcularPuntajePromedio(acumulador_de_puntaje_sommelier, len(vino.resenia))

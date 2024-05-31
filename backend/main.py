@@ -28,18 +28,15 @@ async def root(request: RankingRequest):
     fecha_desde = request.fecha_desde.date()  # Convertir a objeto date
     fecha_hasta = request.fecha_hasta.date()  # Convertir a objeto date
     resenia = request.tipo_de_resenia
-    visualizacion = request.tipo_de_visualizacion
 
-    gestor = GestorRankingVinos(fecha_desde, fecha_hasta, resenia, [])
+    gestor = GestorRankingVinos(fecha_desde, fecha_hasta, resenia, [], [])
     gestor.buscarVinosConReseniasEnPeriodo(vinos_generales)
     gestor.calcularPuntajeDeSommelierEnPeriodo()
     gestor.ordenarVinos()
     interfaz_excel = InterfazExcel()
-    reporte = interfaz_excel.exportarExcel(objetos=gestor.vinosOrdenados)
-    gestor.vinosOrdenados = []
     return {
         "message": "Ranking received",
-        "reporte": reporte
+        "reporte": interfaz_excel.exportarExcel(objetos=gestor.vinosOrdenados)
     }
 
 
