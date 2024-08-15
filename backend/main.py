@@ -37,7 +37,7 @@ async def root(request: RankingRequest):
     # TODO: METER MAS COMENTARIOS
     return {
         "message": "Ranking received",
-        "reporte": interfaz_excel.exportarExcel(objetos=gestor.vinos_ordenados)
+        "reporte": interfaz_excel.exportar_excel(objetos=gestor.vinos_ordenados)
     }
 
 
