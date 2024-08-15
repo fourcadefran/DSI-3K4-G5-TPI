@@ -1,7 +1,7 @@
 class Varietal:
-    def __init__(self, descripcion, porcentajeComposicion):
+    def __init__(self, descripcion, porcentaje_composicion):
         self.descripcion = descripcion
-        self.porcentajeComposicion = porcentajeComposicion
+        self.porcentaje_composicion = porcentaje_composicion
 
-    def getDescripcion(self):
+    def get_descripcion(self):
         return self.descripcion
