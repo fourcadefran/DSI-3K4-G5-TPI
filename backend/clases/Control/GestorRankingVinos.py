@@ -1,7 +1,15 @@
+from clases.Entity.IteradorVinos import IteradorVinos
 from clases.Entity.Vino import Vino
+from clases.Interfaces.IAgregado import IAgregado
+from typing import List
 
+#Realizar la interfaz IAgregado
+class GestorRankingVinos(IAgregado):
 
-class GestorRankingVinos:
+    #Reimplementacion del metodo create_iterable de la interfaz IAgregado - concreciones
+    def create_iterable(self, vinos: List[Vino]) -> IteradorVinos:
+        return IteradorVinos(self.vinosOrdenados, 0)  # chequear
+
     def __init__(self, fechaDesde, fechaHasta, tipoRankingSeleccionado, vinosOrdenados=[], vinosQueCumplenFiltros=[]):
         self.fechaDesde = fechaDesde
         self.fechaHasta = fechaHasta
