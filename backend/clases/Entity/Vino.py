@@ -303,6 +303,6 @@ vino21 = Vino(
 )
 
 
-vinos_generales = [vino1, vino2, vino3, vino4, vino5, vino6, vino7, vino8, vino9, vino10, vino11, vino12, vino13, 
+vinos_generales_array = [vino1, vino2, vino3, vino4, vino5, vino6, vino7, vino8, vino9, vino10, vino11, vino12, vino13,
                    vino14, vino15, vino16, vino17, vino18, vino19, vino20, vino21]
 

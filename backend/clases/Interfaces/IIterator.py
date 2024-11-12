@@ -3,6 +3,8 @@ from typing import List
 
 #Interfaz (en python es una clase abstracta) IIterador con los metodos abstractos
 class IIterator(ABC):
+    def __iter__(self):
+        return self
 
     # abstracciones
     @abstractmethod

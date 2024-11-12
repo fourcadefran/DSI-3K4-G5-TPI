@@ -20,11 +20,10 @@ class IteradorVinos(IIterator):
         pass
 
     def ha_terminado(self) -> bool:
-        return self.posicion_actual > len(self.vinos)
+        return self.posicion_actual < len(self.vinos)
 
     def actual(self) -> Vino:
         return self.vinos[self.posicion_actual]
 
     def cumple_filtro(self, filtros) -> bool:
-        # todo: que filtros tiene que cumplir?
-        pass
+        return self.vinos[self.posicion_actual].tenesReseniasDeTipoEnPeriodo(filtros[0], filtros[1], self.vinos[self.posicion_actual].resenia)
