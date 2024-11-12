@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from starlette.middleware.cors import CORSMiddleware
 
-from clases.Interface.InterfazExcel import InterfazExcel
+from clases.Interfaces.InterfazExcel import InterfazExcel
 from config.models import RankingRequest
 from clases.Control.GestorRankingVinos import GestorRankingVinos
 from clases.Entity.Vino import vinos_generales
