@@ -8,10 +8,8 @@ class RegionVitivinicola:
 
         self.provincia = provincia
 
-
-    def getNombre(self):
+    def get_nombre(self):
         return self.nombre
 
-
-    def obtenerPais(self):
-        return self.provincia.obtenerPais()
+    def obtener_pais(self):
+        return self.provincia.obtener_pais()

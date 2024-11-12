@@ -3,7 +3,8 @@ class InterfazExcel:
     def __init__(self):
         pass
 
-    def exportarExcel(self, objetos):
+    @staticmethod
+    def exportar_excel(objetos):
         reporte = []
         contador = 0
         for objeto in objetos:
@@ -12,7 +13,7 @@ class InterfazExcel:
             reporte.append({
                 "nombre": objeto[0].nombre,
                 "calificacion": objeto[1],
-                "precio": objeto[0].precioARS,
+                "precio": objeto[0].precio_ars,
                 "bodega": objeto[0].bodega.nombre,
                 "varietal": objeto[0].varietal.descripcion,
                 "region": objeto[0].bodega.region.nombre,

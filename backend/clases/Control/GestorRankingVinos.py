@@ -1,41 +1,39 @@
-from clases.Entity.Vino import Vino
-
-
 class GestorRankingVinos:
-    def __init__(self, fechaDesde, fechaHasta, tipoRankingSeleccionado, vinosOrdenados=[], vinosQueCumplenFiltros=[]):
-        self.fechaDesde = fechaDesde
-        self.fechaHasta = fechaHasta
-        self.tipoRankingSeleccionado = tipoRankingSeleccionado
-        self.vinosOrdenados = vinosOrdenados  # [(vino1, puntaje1), (vino2, puntaje2)]
-        self.vinosQueCumplenFiltros = vinosQueCumplenFiltros
+    def __init__(self, fecha_desde, fecha_hasta, tipo_ranking_seleccionado, vinos_ordenados=[],
+                 vinos_que_cumplen_filtros=[]):
+        self.fecha_desde = fecha_desde
+        self.fecha_hasta = fecha_hasta
+        self.tipo_ranking_seleccionado = tipo_ranking_seleccionado
+        self.vinos_ordenados = vinos_ordenados  # [(vino1, puntaje1), (vino2, puntaje2)]
+        self.vinos_que_cumplen_filtros = vinos_que_cumplen_filtros
 
-    def opcionGenerarRankingVinos(self):
+    def opcion_generar_ranking_vinos(self):
         pass
 
-    def tomarSelFechaDesdeHasta(self):
+    def tomar_sel_fecha_desde_hasta(self):
         pass
 
-    def tomarSelTipoResenia(self):
+    def tomar_sel_tipo_resenia(self):
         pass
 
-    def tomarSelTipoVisualizacion(self):
+    def tomar_sel_tipo_visualizacion(self):
         pass
 
-    def buscarVinosConReseniasEnPeriodo(self, vinos_generales):
+    def buscar_vinos_con_resenias_en_periodo(self, vinos_generales):
         for vino in vinos_generales:
-            cumple_filtro = vino.tenesReseniasDeTipoEnPeriodo(self.fechaDesde, self.fechaHasta, vino.resenia)
+            cumple_filtro = vino.tenes_resenias_de_tipo_en_periodo(self.fecha_desde, self.fecha_hasta, vino.resenia)
             if cumple_filtro:
-                self.vinosQueCumplenFiltros.append(vino)
+                self.vinos_que_cumplen_filtros.append(vino)
 
-    def calcularPuntajeDeSommelierEnPeriodo(self):
-        self.vinosOrdenados = []
-        for vino in self.vinosQueCumplenFiltros:
-            acumulador_de_puntaje_sommelier = vino.calcularPuntajeDeSommelierEnPeriodo(self)
-            puntaje_promedio = vino.calcularPuntajePromedio(acumulador_de_puntaje_sommelier, len(vino.resenia))
-            self.vinosOrdenados.append((vino, puntaje_promedio))  # [ (vino1, puntaje1) , (vino2, puntaje2)]
+    def calcular_puntaje_de_sommelier_en_periodo(self):
+        self.vinos_ordenados = []
+        for vino in self.vinos_que_cumplen_filtros:
+            acumulador_de_puntaje_sommelier = vino.calcular_puntaje_de_sommelier_en_periodo(self)
+            puntaje_promedio = vino.calcular_puntaje_promedio(acumulador_de_puntaje_sommelier, len(vino.resenia))
+            self.vinos_ordenados.append((vino, puntaje_promedio))  # [ (vino1, puntaje1) , (vino2, puntaje2)]
 
-    def ordenarVinos(self):
-        self.vinosOrdenados.sort(key=lambda x: x[1], reverse=True)
+    def ordenar_vinos(self):
+        self.vinos_ordenados.sort(key=lambda x: x[1], reverse=True)
 
-    def finCU(self):
+    def fin_cu(self):
         pass

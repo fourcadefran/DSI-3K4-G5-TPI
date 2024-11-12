@@ -7,63 +7,58 @@ from clases.Entity.Pais import Pais
 
 
 class Vino:
-    def __init__(self, aniada, imagenEtiqueta, nombre, notaDeCataBodega, precioARS, resenia: list[Resenia], varietal, bodega):
+    def __init__(self, aniada, imagen_etiqueta, nombre, nota_de_cata_bodega, precio_ars, resenia: list[Resenia],
+                 varietal, bodega):
         self.aniada = aniada
-        self.imagenEtiqueta = imagenEtiqueta
+        self.imagen_etiqueta = imagen_etiqueta
         self.nombre = nombre
-        self.notaDeCataBodeba = notaDeCataBodega
-        self.precioARS = precioARS
+        self.nota_de_cata_bodega = nota_de_cata_bodega
+        self.precio_ars = precio_ars
         
         self.resenia = resenia  # []
         self.varietal = varietal
         self.bodega = bodega
 
-
-    def tenesReseniasDeTipoEnPeriodo(self, fechaDesde, fechaHasta, resenias):
+    @staticmethod
+    def tenes_resenias_de_tipo_en_periodo(fecha_desde, fecha_hasta, resenias):
         for resenia in resenias:
-            es_periodo = resenia.sosDelPeriodo(fechaDesde, fechaHasta)
-            sos_sommelier = resenia.sosDeSommelier()
+            es_periodo = resenia.sos_del_periodo(fecha_desde, fecha_hasta)
+            sos_sommelier = resenia.sos_de_sommelier()
             if es_periodo and sos_sommelier:
                 return True
 
-    def calcularPuntajeDeSommelierEnPeriodo(self, gestor):
+    def calcular_puntaje_de_sommelier_en_periodo(self, gestor):
         acumulador_de_puntaje_sommelier = 0  # la suma de puntajes de las resenias de sommelier
 
-        fecha_desde = gestor.fechaDesde
-        fecha_hasta = gestor.fechaHasta
+        fecha_desde = gestor.fecha_desde
+        fecha_hasta = gestor.fecha_hasta
 
         for resenia in self.resenia:
-            if resenia.sosDeSommelier() and resenia.sosDelPeriodo(fecha_desde, fecha_hasta):
-                acumulador_de_puntaje_sommelier += resenia.getPuntaje()
+            if resenia.sos_de_sommelier() and resenia.sos_del_periodo(fecha_desde, fecha_hasta):
+                acumulador_de_puntaje_sommelier += resenia.get_puntaje()
         return acumulador_de_puntaje_sommelier
 
-
-
-    def calcularPuntajePromedio(self, acumulador, contador):
+    @staticmethod
+    def calcular_puntaje_promedio(acumulador, contador):
         if contador != 0:
             return acumulador / contador
         else:
             return 0
 
-
-    def getNombre(self):
+    def get_nombre(self):
         return self.nombre
 
+    def get_precio(self):
+        return self.precio_ars
 
-    def getPrecio(self):
-        return self.precioARS
-
-
-    def buscarInfoBodega(self):
-        nombre = self.bodega.getNombre()
-        region_y_pais = self.bodega.obtenerRegionYPais()
+    def buscar_info_bodega(self):
+        nombre = self.bodega.get_nombre()
+        region_y_pais = self.bodega.obtener_region_y_pais()
         return nombre, region_y_pais
 
-
-    # Loop en DS -> aclara que solo tiene un Varietal en los CU
-    def buscarVarietal(self):
-        return self.varietal.getDescripcion()
-
+    # Loop en DS -≥ aclara que solo tiene un Varietal en la CU
+    def buscar_varietal(self):
+        return self.varietal.get_descripcion()
 
 
 vino1 = Vino(
@@ -119,7 +114,8 @@ vino5 = Vino(
     ],
     Varietal("Aromas florales", 65),
     Bodega('2017-01-30', "Bodega Rutini", "Historia de Rutini", "Descripción detallada de Rutini",
-           RegionVitivinicola("Región vitivinícola de Patagonia", "Patagonia", Provincia("Río Negro", Pais("Argentina"))))
+           RegionVitivinicola("Región vitivinícola de Patagonia", "Patagonia", Provincia("Río Negro",
+                                                                                         Pais("Argentina"))))
 )
 
 vino6 = Vino(
@@ -180,7 +176,8 @@ vino11 = Vino(
         Resenia("Muy floral", True, '2023-06-12', 8, None)
     ], 
     Varietal("Aromas frutales y florales", 85), 
-    Bodega('2019-10-10', "Bodega Familia Schroeder", "Historia de Familia Schroeder", "Descripción detallada de Familia Schroeder", 
+    Bodega('2019-10-10', "Bodega Familia Schroeder", "Historia de Familia Schroeder",
+           "Descripción detallada de Familia Schroeder",
            RegionVitivinicola("Región vitivinícola de Patagonia", "Patagonia", Provincia("Neuquén", Pais("Argentina"))))
 )
 
@@ -191,7 +188,8 @@ vino12 = Vino(
         Resenia("Un vino con carácter", True, '2022-08-22', 8, None)
     ], 
     Varietal("Aromas a frutos oscuros", 80), 
-    Bodega('2020-04-05', "Bodega Pulenta Estate", "Historia de Pulenta Estate", "Descripción detallada de Pulenta Estate", 
+    Bodega('2020-04-05', "Bodega Pulenta Estate", "Historia de Pulenta Estate",
+           "Descripción detallada de Pulenta Estate",
            RegionVitivinicola("Región vitivinícola de Mendoza", "Mendoza", Provincia("Mendoza", Pais("Argentina"))))
 )
 
@@ -226,8 +224,10 @@ vino15 = Vino(
         Resenia("Excelente relación calidad-precio", True, '2023-01-25', 9, None)
     ], 
     Varietal("Aromas a frutas maduras", 75), 
-    Bodega('2016-03-20', "Bodega Humberto Canale", "Historia de Humberto Canale", "Descripción detallada de Humberto Canale", 
-           RegionVitivinicola("Región vitivinícola de Patagonia", "Patagonia", Provincia("Río Negro", Pais("Argentina"))))
+    Bodega('2016-03-20', "Bodega Humberto Canale", "Historia de Humberto Canale",
+           "Descripción detallada de Humberto Canale",
+           RegionVitivinicola("Región vitivinícola de Patagonia", "Patagonia", Provincia("Río Negro",
+                                                                                         Pais("Argentina"))))
 )
 
 vino16 = Vino(
@@ -239,7 +239,8 @@ vino16 = Vino(
         Resenia("Aromas intensos y complejos", True, '2023-02-20', 8, None)
     ], 
     Varietal("Aromas frutales y especiados", 85), 
-    Bodega('2002-07-19', "Bodega Navarro Correas", "Historia de Navarro Correas", "Descripción detallada de Navarro Correas", 
+    Bodega('2002-07-19', "Bodega Navarro Correas", "Historia de Navarro Correas",
+           "Descripción detallada de Navarro Correas",
            RegionVitivinicola("Región vitivinícola de Mendoza", "Mendoza", Provincia("Mendoza", Pais("Argentina"))))
 )
 
@@ -287,7 +288,8 @@ vino20 = Vino(
         Resenia("Sabor complejo", True, '2023-02-05', 8, None)
     ], 
     Varietal("Aromas frutales y herbales", 80), 
-    Bodega('2021-02-20', "Bodega Finca Las Moras", "Historia de Finca Las Moras", "Descripción detallada de Finca Las Moras", 
+    Bodega('2021-02-20', "Bodega Finca Las Moras", "Historia de Finca Las Moras",
+           "Descripción detallada de Finca Las Moras",
            RegionVitivinicola("Región vitivinícola de San Juan", "San Juan", Provincia("San Juan", Pais("Argentina"))))
 )
 
@@ -305,4 +307,3 @@ vino21 = Vino(
 
 vinos_generales = [vino1, vino2, vino3, vino4, vino5, vino6, vino7, vino8, vino9, vino10, vino11, vino12, vino13, 
                    vino14, vino15, vino16, vino17, vino18, vino19, vino20, vino21]
-
