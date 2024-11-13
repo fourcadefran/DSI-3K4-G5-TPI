@@ -42,7 +42,7 @@ const PantallaRankingVinos = () => {
     const validacion = validarFechas(fechaDesde!, fechaHasta!)
 
     if (!validacion) {
-      Swal.fire({
+      await Swal.fire({
         icon: "error",
         title: "Oops...",
         text: "fecha desde mayor a fecha hasta",
@@ -51,7 +51,7 @@ const PantallaRankingVinos = () => {
     }
 
     if (tipoDeResenia === "normales" || tipoDeResenia === "amigos") {
-      Swal.fire({
+      await Swal.fire({
         icon: "error",
         title: "Oops...",
         text: `El tipo de reseña "${tipoDeResenia}" no esta disponible`,

@@ -1,10 +1,10 @@
 from fastapi import FastAPI
 from starlette.middleware.cors import CORSMiddleware
 
-from clases.Interface.InterfazExcel import InterfazExcel
+from clases.Interfaces.InterfazExcel import InterfazExcel
 from config.models import RankingRequest
 from clases.Control.GestorRankingVinos import GestorRankingVinos
-from clases.Entity.Vino import vinos_generales
+from clases.Entity.Vino import vinos_generales_array
 
 app = FastAPI()
 
@@ -30,7 +30,7 @@ async def root(request: RankingRequest):
     resenia = request.tipo_de_resenia
 
     gestor = GestorRankingVinos(fecha_desde, fecha_hasta, resenia, [], [])
-    gestor.buscarVinosConReseniasEnPeriodo(vinos_generales)
+    gestor.buscarVinosConReseniasEnPeriodo(vinos_generales_array, fecha_desde, fecha_hasta)
     gestor.calcularPuntajeDeSommelierEnPeriodo()
     gestor.ordenarVinos()
     interfaz_excel = InterfazExcel()

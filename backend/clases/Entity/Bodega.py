@@ -11,4 +11,4 @@ class Bodega:
         return self.nombre
 
     def obtenerRegionYPais(self):
-        return self.region.getNombre(), self.region.obtenerPais()
+        return [self.region.getNombre(), self.region.obtenerPais()]

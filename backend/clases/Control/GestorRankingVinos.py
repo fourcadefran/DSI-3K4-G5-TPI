@@ -1,7 +1,15 @@
+from clases.Entity.IteradorVinos import IteradorVinos
 from clases.Entity.Vino import Vino
+from clases.Interfaces.IAgregado import IAgregado
+from typing import List
 
+#Realizar la interfaz IAgregado
+class GestorRankingVinos(IAgregado):
 
-class GestorRankingVinos:
+    #Reimplementacion del metodo create_iterable de la interfaz IAgregado - concreciones
+    def create_iterable(self, coleccion: List[Vino]) -> IteradorVinos:
+        return IteradorVinos(coleccion, 0)
+
     def __init__(self, fechaDesde, fechaHasta, tipoRankingSeleccionado, vinosOrdenados=[], vinosQueCumplenFiltros=[]):
         self.fechaDesde = fechaDesde
         self.fechaHasta = fechaHasta
@@ -21,11 +29,15 @@ class GestorRankingVinos:
     def tomarSelTipoVisualizacion(self):
         pass
 
-    def buscarVinosConReseniasEnPeriodo(self, vinos_generales):
-        for vino in vinos_generales:
-            cumple_filtro = vino.tenesReseniasDeTipoEnPeriodo(self.fechaDesde, self.fechaHasta, vino.resenia)
-            if cumple_filtro:
+    def buscarVinosConReseniasEnPeriodo(self, vinos_generales, fecha_desde, fecha_hasta):
+        iterador_vino = self.create_iterable(vinos_generales)
+        iterador_vino.primero()
+        while iterador_vino.ha_terminado():
+            vino = iterador_vino.actual()
+            if iterador_vino.cumple_filtro([fecha_desde, fecha_hasta]):
                 self.vinosQueCumplenFiltros.append(vino)
+            iterador_vino.siguiente()
+
 
     def calcularPuntajeDeSommelierEnPeriodo(self):
         self.vinosOrdenados = []
