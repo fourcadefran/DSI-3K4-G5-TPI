@@ -7,5 +7,5 @@ class IAgregado(ABC):
 
     # abstracciones
     @abstractmethod
-    def create_iterable(self, vinos: List[object]) -> IIterator:
+    def create_iterable(self, coleccion: List[object]) -> IIterator:
         pass

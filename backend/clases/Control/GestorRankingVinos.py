@@ -7,8 +7,8 @@ from typing import List
 class GestorRankingVinos(IAgregado):
 
     #Reimplementacion del metodo create_iterable de la interfaz IAgregado - concreciones
-    def create_iterable(self, vinos: List[Vino]) -> IteradorVinos:
-        return IteradorVinos(vinos, 0)  # chequear
+    def create_iterable(self, coleccion: List[Vino]) -> IteradorVinos:
+        return IteradorVinos(coleccion, 0)
 
     def __init__(self, fechaDesde, fechaHasta, tipoRankingSeleccionado, vinosOrdenados=[], vinosQueCumplenFiltros=[]):
         self.fechaDesde = fechaDesde
@@ -34,8 +34,7 @@ class GestorRankingVinos(IAgregado):
         iterador_vino.primero()
         while iterador_vino.ha_terminado():
             vino = iterador_vino.actual()
-            cumple_filtro = iterador_vino.cumple_filtro([fecha_desde, fecha_hasta])
-            if cumple_filtro:
+            if iterador_vino.cumple_filtro([fecha_desde, fecha_hasta]):
                 self.vinosQueCumplenFiltros.append(vino)
             iterador_vino.siguiente()
 
