@@ -26,4 +26,5 @@ class IteradorVinos(IIterator):
         return self.vinos[self.posicion_actual]
 
     def cumple_filtro(self, filtros) -> bool:
+        #acceder al vino actual y ejecutar el metodo pasando los filtros como parametro
         return self.vinos[self.posicion_actual].tenesReseniasDeTipoEnPeriodo(filtros[0], filtros[1], self.vinos[self.posicion_actual].resenia)
